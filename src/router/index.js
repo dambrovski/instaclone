@@ -11,6 +11,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import CreatePostScreen from '../screens/CreatePostScreen';
 import VideoScreen from '../screens/VideoScreen';
 import MarketScreen from '../screens/MarketScreen';
+import StoryScreen from '../screens/StoryScreen';
 
 import HomeHeader from '../components/HomeHeader';
 

@@ -1,7 +1,11 @@
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 
-import Story from '../Story';
+import UserStoriesPreview from '../UserStoriesPreview';
+import UserStoryPreview from '../UserStoryPreview';
+import {NavigationContainer} from '@react-navigation/native';
+
+const Stack = createNativeStackNavigator();
 
 const data = [
   {
@@ -43,13 +47,25 @@ const data = [
   },
 ];
 
+const eventLog = () => {
+  <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="UserStoryPreview" component={UserStoryPreview} />
+    </Stack.Navigator>
+  </NavigationContainer>;
+};
+
 const Stories = () => (
   <FlatList
     data={data}
     keyExtractor={({name}) => name}
     horizontal
     showsHorizontalScrollIndicator={false}
-    renderItem={({item}) => <Story imageUri={item.imageUri} name={item.name} />}
+    renderItem={({item}) => (
+      <TouchableOpacity onPress={eventLog}>
+        <UserStoriesPreview imageUri={item.imageUri} name={item.name} />
+      </TouchableOpacity>
+    )}
   />
 );
 
