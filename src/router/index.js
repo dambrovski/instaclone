@@ -1,5 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Text, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 
@@ -12,10 +13,22 @@ import CreatePostScreen from '../screens/CreatePostScreen';
 import VideoScreen from '../screens/VideoScreen';
 import MarketScreen from '../screens/MarketScreen';
 import StoryScreen from '../screens/StoryScreen';
-
 import HomeHeader from '../components/HomeHeader';
 
 const Tab = createBottomTabNavigator();
+const HomeStack = createNativeStackNavigator();
+
+const HomeRoutes = () => (
+  <HomeStack.Navigator>
+    <HomeStack.Screen
+      name="Story"
+      component={StoryScreen}
+      options={{
+        headerShown: false,
+      }}
+    />
+  </HomeStack.Navigator>
+);
 
 const Router = () => {
   return (
